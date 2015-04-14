@@ -1,0 +1,285 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+
+// IMPORTS
+@import "base-set.scss";
+
+//opacity mixin for fixing ie
+@mixin opacity($value) {
+  opacity: $value;
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$value * 100})";
+  /* IE 5-7 */
+  filter: alpha(opacity=#{$value * 100});
+  /* really old safari */
+  -khtml-opacity: $value;
+  /* really old netscape */
+  -moz-opacity: $value;
+}
+
+@mixin ie-background-cover($src) {
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{$src}', sizingMethod='scale');
+
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{$src}', sizingMethod='scale')";
+}
+
+@font-face {
+  font-family: 'ao_lt_btlight';
+  src: url('http://www.aoproductions.net/css/ao-light-webfont.eot');
+  src: url('http://www.aoproductions.net/css/ao-light-webfont.eot?#iefix') format('embedded-opentype'),
+    url('http://www.aoproductions.net/css/ao-light-webfont.woff') format('woff'),
+    url('http://www.aoproductions.net/css/ao-light-webfont.ttf') format('truetype'),
+    url('http://www.aoproductions.net/css/ao-light-webfont.svg#ao_lt_btlight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// BOILERPLATE GENERATED
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+// END BOILERPLATE GENERATED
+
+// height fix
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+body {
+  background-image: url('../images/blowout-background-2014.jpg');
+  background-size: cover;
+  @include ie-background-cover('../images/blowout-background-2014.jpg');
+  color: white;
+  font-family: "ao_lt_btlight", sans-serif;
+}
+
+// typog
+
+h3 {
+  position: relative;
+  font-size: 50px;
+  font-weight: bold;
+  margin: 2% 5% -3% 10%;
+  padding-left: 10%;
+  img {
+    max-width: 250px;
+    width: 25%;
+  }
+}
+
+h1.hero {
+  padding-left: 10%;
+  font-size: 150px;
+  position: relative;
+  line-height: 85px;
+  p {
+    font-size: 33%;
+    position: absolute;
+    left: calc(10% + 435px);
+    top: -8px;
+    &:before {
+      content: "\2190";
+      font-size: 65px;
+      color: cyan;
+      position: relative;
+      top: -5px;
+      right: 10px;
+      text-shadow: 2px 2px 0 magenta;
+    }
+    &:after {
+      content: "\2192";
+      font-size: 65px;
+      color: cyan;
+      position: relative;
+      top: -5px;
+      left: 10px;
+      text-shadow: -2px 2px 0 magenta;
+    }
+  }
+  margin: 5%;
+  text-shadow: -5px -5px 5px rgba(0,0,0,0.25)
+            ,  2px 1px 3px rgba(0,0,0,0.25);
+}
+
+// cal
+.cal {
+  width: 80%;
+  margin: 0 auto;
+  padding-left: 1px;
+  background: rgba(255, 255, 255, 0.5);
+  text-align: center;
+
+  .date {
+    color: magenta;
+    width: 13%;
+    padding: 0.33%;
+    margin: 1px;
+    float: left;
+    background: rgba(255,255,255,0.6);
+    position: relative;
+    font-size: 30px;
+    font-weight: bold;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transition: box-shadow ease 0.5s;
+
+    &.event:hover {
+      .cover-flap {
+        transform: rotateX(100deg);
+        box-shadow: 0 10px 3px rgba(0,0,0,0.1);
+        span {
+          @include opacity(0);
+        }
+      }
+      box-shadow: inset 0 6px darken(cyan, 7%)
+                , inset 0 8px darken(cyan, 6%)
+                , inset 0 10px darken(cyan, 5%)
+                , inset 0 13px darken(cyan, 4%)
+                , inset 0 15px darken(cyan, 3%);
+    }
+    
+    &.event:active {
+      .cover-flap {
+        transform: rotateX(100deg);
+        box-shadow: 0 10px 3px darken(yellow, 5%);
+        span {
+          @include opacity(0);
+        }
+      }
+      box-shadow: inset 0 6px darken(cyan, 7%)
+                , inset 0 8px darken(cyan, 6%)
+                , inset 0 10px darken(cyan, 5%)
+                , inset 0 13px darken(cyan, 4%)
+                , inset 0 15px darken(cyan, 3%);
+    }
+    
+    .v-center {
+      display: inline-table;
+      width: 100%;
+      height: 100%;
+
+      span {
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+    
+    &.event {
+      font-size: 18px;
+      background: cyan;
+      color: white;
+      text-shadow: 0px 0px 10px lighten(blue, 15%);
+      
+      &.day_27 {
+        font-size: 16px;
+      }
+    }
+    
+    .cover-flap {
+      background: yellow;
+      color: magenta;
+      text-shadow: none;
+      padding: 1%;
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform ease 0.5s
+                , box-shadow ease 0.1s;
+      transform-origin: 50% 0%;
+      
+      span {
+        transition: opacity ease 0.1s 0.3s;
+      }
+    }
+  }
+}
+
+h2 {
+  text-align: center;
+  font-size: 45px;
+  margin: 80px 0;
+  text-transform: uppercase;
+  clear: both;
+  font-weight: bold;
+  
+  a {
+    position: relative;
+    top: 50px;
+    color: white;
+    text-decoration: underline;
+    &:hover { color: cyan; }
+  }
+}
+
+section {
+  max-width: 1000px;
+  margin: 0 auto;
+  font-weight: bold;
+}
+
+.third {
+  width: 33.3333%;
+  float: left;
+  padding: 0 20px;
+  margin-top: -20px;
+  text-align: justify;
+  
+  h3 {
+    text-align: center;
+    padding: 0;
+    color: cyan;
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+  
+  p {
+    font-size: 22px;
+    text-shadow: 0 0 3px black;
+  }
+  
+  &:nth-of-type(3) h3 { color: yellow !important; }
+  &+.third h3 { color: magenta; }
+}
+
+@media all and (max-width:850px) {
+  h1.hero {
+    font-size: 120px;
+    padding-left: 0;
+    p {
+      left: 385px;
+    }
+  }
+  .third {
+    width: 100%;
+    h3 {
+      margin: 30px;
+    }
+  }
+}
+
+@media all and (max-width:620px) {
+  h1.hero {
+    font-size: 88px;
+    line-height: 50px;
+    margin: 10% 5%;
+    p {
+      left: 250px;
+      top: -15px;
+      &:before, &:after {
+        font-size: 50px;
+        top: 0;
+      }
+    }
+  }
+  .event.day_27 {
+    font-size: 14px !important;
+  }
+}

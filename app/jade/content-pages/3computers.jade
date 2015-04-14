@@ -1,0 +1,14 @@
+mixin list-link(link, text)
+  li: a(href="#{link}") #{text}
+
+h2 Computer Sales
+p Looking for a customized computer that is made just for you? We offer several kinds of PCs. Compare our available options at the links below:
+ul
+  +list-link("http://2duspb1929.plpconfig.com/desktop", "Intel Desktops")
+  +list-link("http://2duspb1929.plpconfig.com/sfactor", "Small Form Factor Systems")
+  +list-link("http://2duspb1929.plpconfig.com/desktop", "AMD Desktops")
+  +list-link("http://2duspb1929.plpconfig.com/notebook", "Notebooks")
+  li Netbooks Coming Soon
+p Before you make a buying decision based on a manufacturer's "after rebate" price, take some time to <a href="http://roadrunnercomputers.com/rebates.html">learn more about how rebates work</a>.
+
+p We also carry select preconfigured Dell and Lenovo computers in our showroom.
