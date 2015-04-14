@@ -1,11 +1,5 @@
-### DAFUK is DIS?
+### A&O Blowout 2014 Back on Campus Calendar
 
-Basically hwat it luuks liek.
+What it says up there.
 
-### DEMO VIDEO?!
-
-nALP nevermind
-
-### BUT WAIT
-
-Try it on yer iPad! It's seggxy.
+Uses Jade & Sass, and Gulp for building.
